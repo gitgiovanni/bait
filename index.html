@@ -5,106 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Botão Fake</title>
     <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f8f9fa;
-            font-family: Arial, sans-serif;
-        }
-
-        .fake-button {
-            background-color: #ff4c4c; /* Vermelho chamativo */
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 5px;
-            font-size: 18px;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            position: relative;
-        }
-
-        .fake-button:hover {
-            background-color: #ff1a1a; /* Vermelho mais escuro ao passar o mouse */
-        }
-
-        .fake-button:active {
-            transform: translateY(2px);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Efeito de texto piscante */
-        .pulsate {
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
-            }
-            50% {
-                text-shadow: 0 0 20px rgba(255, 0, 0, 1);
-            }
-        }
+        /* Seu estilo aqui */
     </style>
 </head>
 <body>
-
-    <h1 id="ipDisplay">Seu IP: Carregando...</h1>
-    <button class="fake-button pulsate" onclick="handleClick()">Você clicou em um link que poderia ser um malware! Contate o TI</button>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Warning_icon.svg/1200px-Warning_icon.svg.png" alt="Alerta" style="max-width: 200px; height: auto; margin-top: 20px;">
+    <button class="fake-button" id="fake-button">Você clicou em um link que poderia ser um malware!! Contate o TI</button>
 
     <script>
-        let visitorIP = '';
-
-        // Função para obter o IP do visitante
-        function getVisitorIP() {
+        document.getElementById('fake-button').onclick = function() {
+            // Obter o IP
             fetch('http://localhost:3000/get-ip')
                 .then(response => response.json())
                 .then(data => {
-                    visitorIP = data.ip;
-                    document.getElementById('ipDisplay').innerText = `Seu IP: ${visitorIP}`;
+                    // Salvar o IP
+                    fetch('http://localhost:3000/save-ip', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ ip: data.ip })
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            alert('IP salvo com sucesso!');
+                        } else {
+                            alert('Erro ao salvar o IP.');
+                        }
+                    });
                 })
-                .catch(error => {
-                    console.error('Erro ao obter o IP:', error);
-                });
-        }
-
-        // Função para simular a ação do botão e salvar o IP
-        function handleClick() {
-            alert('Você clicou em um link que poderia ser um malware! Contate o TI.');
-            saveIP(visitorIP);
-        }
-
-        // Função para salvar o IP no servidor
-        function saveIP(ip) {
-            fetch('http://localhost:3000/save-ip', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ ip: ip }),
-            })
-            .then(response => {
-                if (response.ok) {
-                    console.log('IP salvo com sucesso.');
-                } else {
-                    console.error('Erro ao salvar o IP.');
-                }
-            })
-            .catch(error => {
-                console.error('Erro ao salvar o IP:', error);
-            });
-        }
-
-        // Chama a função para obter o IP quando a página é carregada
-        window.onload = getVisitorIP;
+                .catch(error => console.error('Erro ao obter o IP:', error));
+        };
     </script>
-
 </body>
 </html>
