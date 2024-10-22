@@ -55,25 +55,51 @@
 </head>
 <body>
 
-    <h1 id="ipDisplay">ISTO ERA UM TESTE!</h1>
-    <button class="fake-button pulsate" onclick="handleClick()">Você clicou em um link que poderia ser um malware! Contate o TI para realizar o treinamento obrigatório para quem clicou!</button>
+    <h1 id="ipDisplay">Seu IP: Carregando...</h1>
+    <button class="fake-button pulsate" onclick="handleClick()">Você clicou em um link que poderia ser um malware! Contate o TI</button>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Warning_icon.svg/1200px-Warning_icon.svg.png" alt="Alerta" style="max-width: 200px; height: auto; margin-top: 20px;">
 
     <script>
+        let visitorIP = '';
+
         // Função para obter o IP do visitante
         function getVisitorIP() {
             fetch('http://localhost:3000/get-ip')
                 .then(response => response.json())
                 .then(data => {
-                    document.getElementById('ipDisplay').innerText = `Seu IP: ${data.ip}`;
+                    visitorIP = data.ip;
+                    document.getElementById('ipDisplay').innerText = `Seu IP: ${visitorIP}`;
                 })
                 .catch(error => {
                     console.error('Erro ao obter o IP:', error);
                 });
         }
 
-        // Função para simular a ação do botão
+        // Função para simular a ação do botão e salvar o IP
         function handleClick() {
             alert('Você clicou em um link que poderia ser um malware! Contate o TI.');
+            saveIP(visitorIP);
+        }
+
+        // Função para salvar o IP no servidor
+        function saveIP(ip) {
+            fetch('http://localhost:3000/save-ip', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ ip: ip }),
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('IP salvo com sucesso.');
+                } else {
+                    console.error('Erro ao salvar o IP.');
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao salvar o IP:', error);
+            });
         }
 
         // Chama a função para obter o IP quando a página é carregada
