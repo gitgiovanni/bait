@@ -15,7 +15,7 @@
         }
 
         .fake-button {
-            background-color: #ff4c4c;
+            background-color: #ff4c4c; /* Vermelho chamativo */
             color: white;
             padding: 15px 30px;
             border: none;
@@ -29,55 +29,56 @@
         }
 
         .fake-button:hover {
-            background-color: #ff1a1a;
+            background-color: #ff1a1a; /* Vermelho mais escuro ao passar o mouse */
         }
 
         .fake-button:active {
             transform: translateY(2px);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
+
+        /* Efeito de texto piscante */
+        .pulsate {
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(255, 0, 0, 1);
+            }
+        }
     </style>
 </head>
 <body>
 
-    <button class="fake-button" id="fake-button">Você clicou em um link que poderia ser um malware!! Contate o TI</button>
+    <button class="fake-button pulsate" onclick="handleClick()">Você clicou em um link que poderia ser um malware!! Contate o TI</button>
 
     <script>
-        // Adicionar evento de clique ao botão
-        document.getElementById('fake-button').onclick = function() {
-            // Tentar obter o IP do usuário
-            fetch('http://localhost:3000/get-ip')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Erro ao obter o IP');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    // Tentar salvar o IP no servidor
-                    fetch('http://localhost:3000/save-ip', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ ip: data.ip })
-                    })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Erro ao salvar o IP');
-                        }
-                        alert('IP salvo com sucesso!');
-                    })
-                    .catch(error => {
-                        console.error('Erro ao salvar o IP:', error);
-                        alert('Falha ao salvar o IP.');
-                    });
-                })
-                .catch(error => {
-                    console.error('Erro ao obter o IP:', error);
-                    alert('Não foi possível obter o IP.');
+        async function handleClick() {
+            try {
+                // Obter o IP do usuário
+                const ipResponse = await fetch('http://127.0.0.1:3000/get-ip');
+                const ipData = await ipResponse.json();
+                const userIP = ipData.ip;
+
+                // Salvar o IP
+                await fetch('http://127.0.0.1:3000/save-ip', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ ip: userIP }),
                 });
-        };
+
+                alert('IP salvo com sucesso!');
+
+            } catch (error) {
+                console.error('Erro ao salvar o IP:', error);
+            }
+        }
     </script>
 </body>
 </html>
