@@ -15,7 +15,7 @@
         }
 
         .fake-button {
-            background-color: #ff4c4c; /* Vermelho chamativo */
+            background-color: #ff4c4c;
             color: white;
             padding: 15px 30px;
             border: none;
@@ -29,56 +29,47 @@
         }
 
         .fake-button:hover {
-            background-color: #ff1a1a; /* Vermelho mais escuro ao passar o mouse */
+            background-color: #ff1a1a;
         }
 
         .fake-button:active {
             transform: translateY(2px);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
-
-        /* Efeito de texto piscante */
-        .pulsate {
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
-            }
-            50% {
-                text-shadow: 0 0 20px rgba(255, 0, 0, 1);
-            }
-        }
     </style>
 </head>
 <body>
 
-    <button class="fake-button pulsate" onclick="handleClick()">Você clicou em um link que poderia ser um malware!! Contate o TI</button>
+    <button class="fake-button" id="fake-button">Você clicou em um link que poderia ser um malware!! contate o TI</button>
 
     <script>
-        async function handleClick() {
+        document.getElementById('fake-button').onclick = async function() {
             try {
-                // Obter o IP do usuário
+                // Obtendo o IP
                 const ipResponse = await fetch('http://127.0.0.1:3000/get-ip');
                 const ipData = await ipResponse.json();
-                const userIP = ipData.ip;
+                const userIp = ipData.ip;
 
-                // Salvar o IP
-                await fetch('http://127.0.0.1:3000/save-ip', {
+                // Salvando o IP
+                const saveResponse = await fetch('http://127.0.0.1:3000/save-ip', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
+                        'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ ip: userIP }),
+                    body: JSON.stringify({ ip: userIp })
                 });
 
-                alert('IP salvo com sucesso!');
+                if (!saveResponse.ok) {
+                    throw new Error('Falha ao salvar o IP');
+                }
 
+                alert('IP salvo com sucesso!');
             } catch (error) {
                 console.error('Erro ao salvar o IP:', error);
+                alert('Erro ao salvar o IP');
             }
-        }
+        };
     </script>
+
 </body>
 </html>
