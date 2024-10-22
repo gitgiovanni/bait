@@ -7,6 +7,7 @@
     <style>
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -54,7 +55,30 @@
 </head>
 <body>
 
-    <button class="fake-button pulsate" onclick="alert('Você clicou no botão!')">Clique aqui para atualizar suas credenciais</button>
+    <h1 id="ipDisplay">Seu IP: Carregando...</h1>
+    <button class="fake-button pulsate" onclick="handleClick()">Você clicou em um link que poderia ser um malware! Contate o TI</button>
+
+    <script>
+        // Função para obter o IP do visitante
+        function getVisitorIP() {
+            fetch('http://localhost:3000/get-ip')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('ipDisplay').innerText = `Seu IP: ${data.ip}`;
+                })
+                .catch(error => {
+                    console.error('Erro ao obter o IP:', error);
+                });
+        }
+
+        // Função para simular a ação do botão
+        function handleClick() {
+            alert('Você clicou em um link que poderia ser um malware! Contate o TI.');
+        }
+
+        // Chama a função para obter o IP quando a página é carregada
+        window.onload = getVisitorIP;
+    </script>
 
 </body>
 </html>
