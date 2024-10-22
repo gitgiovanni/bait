@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botão Fake</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .fake-button {
+            background-color: #ff4c4c; /* Vermelho chamativo */
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .fake-button:hover {
+            background-color: #ff1a1a; /* Vermelho mais escuro ao passar o mouse */
+        }
+
+        .fake-button:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Efeito de texto piscante */
+        .pulsate {
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(255, 0, 0, 1);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="fake-button pulsate" onclick="alert('Você clicou no botão!')">Clique aqui para atualizar suas credenciais</button>
+
+</body>
+</html>
