@@ -102,7 +102,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('form');
-    const API_URL = 'https://seu-backend-deployed.com'; // Você precisará alterar isto
+    const API_URL = 'http://localhost:3000'; // URL do servidor local
 
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
@@ -110,7 +110,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const name = document.getElementById('name').value;
         const branch = document.getElementById('branch').value;
         
+        if (!name || !branch) {
+            alert('Por favor, preencha todos os campos.');
+            return;
+        }
+
         try {
+            console.log('Enviando dados:', { name, branch }); // Log para debug
+            
             const response = await fetch(`${API_URL}/participar`, {
                 method: 'POST',
                 headers: {
@@ -118,6 +125,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 body: JSON.stringify({ name, branch })
             });
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
             
             const data = await response.json();
             
@@ -128,10 +139,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert('Erro ao registrar participação: ' + data.message);
             }
         } catch (error) {
-            console.error('Erro:', error);
-            alert('Erro ao conectar com o servidor. Tente novamente mais tarde.');
+            console.error('Erro detalhado:', error); // Log detalhado do erro
+            alert('Erro ao conectar com o servidor. Verifique o console para mais detalhes.');
         }
     });
+
+    // Função para testar a conexão com o servidor
+    async function testServerConnection() {
+        try {
+            const response = await fetch(`${API_URL}/test`);
+            const data = await response.json();
+            console.log('Teste de conexão:', data);
+        } catch (error) {
+            console.error('Erro no teste de conexão:', error);
+        }
+    }
+
+    // Testa a conexão quando a página carrega
+    testServerConnection();
 });
 </script>
     </div>
