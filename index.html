@@ -90,60 +90,8 @@
     <div class="form-container">
         <h1>Sorteio de Viagem</h1>
         <img class="main-image" src="https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xODkwJnZlcj0xMDAwJmZpbGU9MjM4OTQ3MjkzNDIucG5nJmNyYz0zNDEyOTY1NTAzJnNpemU9MS40NTE2MTImdUlkPTI1JmZTSWQ9MSZ1U0lkPTEmZD1mYWxzZSZ0a249JnB1YmxpY1VybD10cnVlJmF0dGFjaD1mYWxzZQ==" alt="Sorteio de Viagem">
-       <form action="/participar" method="POST">
-    <label for="name">Nome:</label>
-    <input type="text" id="name" name="name" required>
+     <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeI4uRsZJfnQ7lsdfRX07-YY3PLkc1SSClnt3DNhO-Bm8dmrA/viewform?embedded=true" width="640" height="1636" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
 
-    <label for="branch">Filial:</label>
-    <input type="text" id="branch" name="branch" required>
-
-    <input type="submit" value="Participar do Sorteio">
-</form>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('form');
-    // URL do seu servidor após deploy
-    const API_URL = 'https://sorteio-viagem.onrender.com'; // Você vai substituir por sua URL real
-
-    form.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        // Desabilita o botão para evitar envios duplicados
-        const submitButton = form.querySelector('input[type="submit"]');
-        submitButton.disabled = true;
-        submitButton.value = 'Enviando...';
-
-        try {
-            const name = document.getElementById('name').value;
-            const branch = document.getElementById('branch').value;
-
-            const response = await fetch(`${API_URL}/participar`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ name, branch })
-            });
-
-            const data = await response.json();
-
-            if (data.success) {
-                alert('Participação registrada com sucesso!');
-                form.reset();
-            } else {
-                throw new Error(data.message);
-            }
-        } catch (error) {
-            console.error('Erro:', error);
-            alert('Erro ao registrar participação. Por favor, tente novamente.');
-        } finally {
-            // Reabilita o botão
-            submitButton.disabled = false;
-            submitButton.value = 'Participar do Sorteio';
-        }
-    });
-});
-</script>
     </div>
 </body>
 </html>
