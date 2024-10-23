@@ -6,7 +6,7 @@
     <title>Sorteio de Viagem</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
             height: 100vh;
             margin: 0;
             background-image: url('https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xODg2JnZlcj0xMDAwJmZpbGU9bG9nb3RpcG8tbWVnYS1zb3J0ZWlvLTNkLWxhYmVsLXBhcmEtY2FtcGFuaGFzLWRlLXN1cGVybWVyY2Fkby1tZWdhLXNvcnRlaW8tbm8tYnJhc2lsXzMxNDk5OS0yMDU3KyUyODElMjkucG5nJmNyYz0xMTgyNzE2OTEmc2l6ZT0wLjA0NzU5NyZ1SWQ9MjUmZlNJZD0xJnVTSWQ9MSZkPWZhbHNlJnRrbj0mcHVibGljVXJsPXRydWUmYXR0YWNoPWZhbHNl.png');
@@ -16,15 +16,21 @@
             position: relative; /* Para posicionamento dos botões */
         }
         .form-container {
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.8);
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
             text-align: center;
             max-width: 400px;
             margin: auto;
             z-index: 1;
             position: relative;
+        }
+        h1 {
+            color: black;
+            font-size: 36px;
+            text-transform: uppercase;
+            text-shadow: 3px 3px 10px red, -3px -3px 10px yellow;
         }
         iframe {
             width: 100%;
@@ -32,32 +38,34 @@
         }
         .crazy-button {
             position: absolute;
-            background-color: red;
-            color: yellow;
-            font-size: 20px;
-            padding: 10px 20px;
-            border: none;
+            background-color: lime;
+            color: red;
+            font-size: 26px;
+            padding: 15px 30px;
+            border: 5px dashed blue;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 15px;
             font-weight: bold;
-            animation: blink 1s infinite; /* Botões piscando */
+            animation: blink 0.5s infinite; /* Piscar mais rápido */
+            text-transform: uppercase;
+            text-shadow: 2px 2px 5px yellow;
         }
         @keyframes blink {
             0% { opacity: 1; }
-            50% { opacity: 0.5; }
+            50% { opacity: 0.2; }
             100% { opacity: 1; }
         }
         /* Estilos diferentes para cada botão */
-        .button-1 { top: 10%; left: 5%; }
-        .button-2 { top: 25%; left: 70%; }
-        .button-3 { top: 50%; left: 20%; }
-        .button-4 { top: 70%; left: 60%; }
-        .button-5 { top: 85%; left: 10%; }
-        .button-6 { top: 15%; left: 40%; }
-        .button-7 { top: 35%; left: 80%; }
-        .button-8 { top: 60%; left: 5%; }
-        .button-9 { top: 75%; left: 50%; }
-        .button-10 { top: 90%; left: 75%; }
+        .button-1 { top: 10%; left: 5%; transform: rotate(-10deg); }
+        .button-2 { top: 25%; left: 70%; transform: rotate(15deg); }
+        .button-3 { top: 50%; left: 20%; transform: rotate(-20deg); }
+        .button-4 { top: 70%; left: 60%; transform: rotate(5deg); }
+        .button-5 { top: 85%; left: 10%; transform: rotate(-15deg); }
+        .button-6 { top: 15%; left: 40%; transform: rotate(20deg); }
+        .button-7 { top: 35%; left: 80%; transform: rotate(-25deg); }
+        .button-8 { top: 60%; left: 5%; transform: rotate(10deg); }
+        .button-9 { top: 75%; left: 50%; transform: rotate(-30deg); }
+        .button-10 { top: 90%; left: 75%; transform: rotate(25deg); }
 
     </style>
 </head>
