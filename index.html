@@ -20,21 +20,28 @@
         }
         .logo-container {
             margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap; /* Para permitir que os logos quebrem em várias linhas */
+            justify-content: center; /* Centraliza os logos */
+            width: 100%; /* Garante que ocupe toda a largura */
+        }
+        .logo {
+            max-width: 100px; /* Diminuindo o tamanho do logo */
+            height: auto;
+            margin: 10px;
         }
         .form-container {
-            background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semi-transparente */
-            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9); /* Fundo branco semi-transparente */
+            padding: 30px; /* Aumentando o padding */
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Sombra mais pronunciada */
             text-align: center;
+            width: 90%; /* Largura do container */
+            max-width: 400px; /* Limite máximo para não ficar muito largo */
         }
         h1 {
             margin: 0;
-        }
-        img.logo {
-            max-width: 150px; /* Diminuindo o tamanho do logo */
-            height: auto;
-            margin: 10px 0;
+            font-size: 24px; /* Aumentando o tamanho do título */
         }
         img.main-image {
             max-width: 100%;
@@ -43,26 +50,28 @@
         }
         label {
             display: block;
-            margin-top: 10px;
+            margin-top: 15px; /* Aumentando espaço acima */
             margin-bottom: 5px;
             font-weight: bold;
             color: #333; /* Cor do texto dos labels */
         }
         input[type="text"] {
             width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
+            padding: 12px; /* Aumentando o padding das caixinhas */
+            margin-bottom: 15px; /* Aumentando o espaço entre as caixinhas */
             border: 1px solid #ccc;
             border-radius: 5px;
+            font-size: 16px; /* Aumentando o tamanho da fonte */
         }
         input[type="submit"] {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             background-color: #007bff;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 16px; /* Aumentando o tamanho da fonte do botão */
         }
         input[type="submit"]:hover {
             background-color: #0056b3;
@@ -71,20 +80,24 @@
 </head>
 <body>
     <div class="logo-container">
+        <!-- Replicando o logo várias vezes -->
+        <img class="logo" src="https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xNzk3JnZlcj0xMDAwJmZpbGU9YW5kcmEtbG9nbyslMjgxJTI5KyUyODElMjkucG5nJmNyYz00MjIwODY0MTU4JnNpemU9MC4wMDYwNjcmdUlkPTI1JmZTSWQ9MSZ1U0lkPTEmZD1mYWxzZSZ0a249JnB1YmxpY1VybD10cnVlJmF0dGFjaD1mYWxzZQ==" alt="Logo Andra">
+        <img class="logo" src="https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xNzk3JnZlcj0xMDAwJmZpbGU9YW5kcmEtbG9nbyslMjgxJTI5KyUyODElMjkucG5nJmNyYz00MjIwODY0MTU4JnNpemU9MC4wMDYwNjcmdUlkPTI1JmZTSWQ9MSZ1U0lkPTEmZD1mYWxzZSZ0a249JnB1YmxpY1VybD10cnVlJmF0dGFjaD1mYWxzZQ==" alt="Logo Andra">
+        <img class="logo" src="https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xNzk3JnZlcj0xMDAwJmZpbGU9YW5kcmEtbG9nbyslMjgxJTI5KyUyODElMjkucG5nJmNyYz00MjIwODY0MTU4JnNpemU9MC4wMDYwNjcmdUlkPTI1JmZTSWQ9MSZ1U0lkPTEmZD1mYWxzZSZ0a249JnB1YmxpY1VybD10cnVlJmF0dGFjaD1mYWxzZQ==" alt="Logo Andra">
+        <img class="logo" src="https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xNzk3JnZlcj0xMDAwJmZpbGU9YW5kcmEtbG9nbyslMjgxJTI5KyUyODElMjkucG5nJmNyYz00MjIwODY0MTU4JnNpemU9MC4wMDYwNjcmdUlkPTI1JmZTSWQ9MSZ1U0lkPTEmZD1mYWxzZSZ0a249JnB1YmxpY1VybD10cnVlJmF0dGFjaD1mYWxzZQ==" alt="Logo Andra">
         <img class="logo" src="https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xNzk3JnZlcj0xMDAwJmZpbGU9YW5kcmEtbG9nbyslMjgxJTI5KyUyODElMjkucG5nJmNyYz00MjIwODY0MTU4JnNpemU9MC4wMDYwNjcmdUlkPTI1JmZTSWQ9MSZ1U0lkPTEmZD1mYWxzZSZ0a249JnB1YmxpY1VybD10cnVlJmF0dGFjaD1mYWxzZQ==" alt="Logo Andra">
     </div>
     <div class="form-container">
         <h1>Sorteio de Viagem</h1>
         <img class="main-image" src="https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xODkwJnZlcj0xMDAwJmZpbGU9MjM4OTQ3MjkzNDIucG5nJmNyYz0zNDEyOTY1NTAzJnNpemU9MS40NTE2MTImdUlkPTI1JmZTSWQ9MSZ1U0lkPTEmZD1mYWxzZSZ0a249JnB1YmxpY1VybD10cnVlJmF0dGFjaD1mYWxzZQ==" alt="Sorteio de Viagem">
-        
-        <form id="sorteio-form">
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" required>
-            
-            <label for="filial">Filial:</label>
-            <input type="text" id="filial" name="filial" required>
-            
-            <input type="submit" value="Participar">
+        <form>
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="branch">Filial:</label>
+            <input type="text" id="branch" name="branch" required>
+
+            <input type="submit" value="Participar do Sorteio">
         </form>
     </div>
 </body>
