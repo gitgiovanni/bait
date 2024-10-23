@@ -14,34 +14,34 @@
             height: 100vh;
             margin: 0;
             background-image: url('https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xODg2JnZlcj0xMDAwJmZpbGU9bG9nb3RpcG8tbWVnYS1zb3J0ZWlvLTNkLWxhYmVsLXBhcmEtY2FtcGFuaGFzLWRlLXN1cGVybWVyY2Fkby1tZWdhLXNvcnRlaW8tbm8tYnJhc2lsXzMxNDk5OS0yMDU3KyUyODElMjkucG5nJmNyYz0xMTgyNzE2OTEmc2l6ZT0wLjA0NzU5NyZ1SWQ9MjUmZlNJZD0xJnVTSWQ9MSZkPWZhbHNlJnRrbj0mcHVibGljVXJsPXRydWUmYXR0YWNoPWZhbHNl.png');
-            background-size: cover; /* Faz a imagem cobrir toda a área */
+            background-size: cover;
             background-position: center;
-            color: white; /* Muda a cor do texto para branco */
+            color: white;
         }
         .logo-container {
             margin-bottom: 20px;
             display: flex;
-            flex-wrap: wrap; /* Para permitir que os logos quebrem em várias linhas */
-            justify-content: center; /* Centraliza os logos */
-            width: 100%; /* Garante que ocupe toda a largura */
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
         }
         .logo {
-            max-width: 100px; /* Diminuindo o tamanho do logo */
+            max-width: 100px;
             height: auto;
             margin: 10px;
         }
         .form-container {
-            background-color: rgba(255, 255, 255, 0.9); /* Fundo branco semi-transparente */
-            padding: 30px; /* Aumentando o padding */
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Sombra mais pronunciada */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
             text-align: center;
-            width: 90%; /* Largura do container */
-            max-width: 400px; /* Limite máximo para não ficar muito largo */
+            width: 90%;
+            max-width: 400px;
         }
         h1 {
             margin: 0;
-            font-size: 24px; /* Aumentando o tamanho do título */
+            font-size: 24px;
         }
         img.main-image {
             max-width: 100%;
@@ -50,18 +50,18 @@
         }
         label {
             display: block;
-            margin-top: 15px; /* Aumentando espaço acima */
+            margin-top: 15px;
             margin-bottom: 5px;
             font-weight: bold;
-            color: #333; /* Cor do texto dos labels */
+            color: #333;
         }
         input[type="text"] {
             width: 100%;
-            padding: 12px; /* Aumentando o padding das caixinhas */
-            margin-bottom: 15px; /* Aumentando o espaço entre as caixinhas */
+            padding: 12px;
+            margin-bottom: 15px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            font-size: 16px; /* Aumentando o tamanho da fonte */
+            font-size: 16px;
         }
         input[type="submit"] {
             width: 100%;
@@ -71,16 +71,25 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 16px; /* Aumentando o tamanho da fonte do botão */
+            font-size: 16px;
         }
         input[type="submit"]:hover {
             background-color: #0056b3;
+        }
+        .images-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .dynamic-image {
+            max-width: 100px; /* Ajusta o tamanho da imagem adicionada */
+            margin: 5px;
         }
     </style>
 </head>
 <body>
     <div class="logo-container">
-        <!-- Replicando o logo várias vezes -->
         <img class="logo" src="https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xNzk3JnZlcj0xMDAwJmZpbGU9YW5kcmEtbG9nbyslMjgxJTI5KyUyODElMjkucG5nJmNyYz00MjIwODY0MTU4JnNpemU9MC4wMDYwNjcmdUlkPTI1JmZTSWQ9MSZ1U0lkPTEmZD1mYWxzZSZ0a249JnB1YmxpY1VybD10cnVlJmF0dGFjaD1mYWxzZQ==" alt="Logo Andra">
         <img class="logo" src="https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xNzk3JnZlcj0xMDAwJmZpbGU9YW5kcmEtbG9nbyslMjgxJTI5KyUyODElMjkucG5nJmNyYz00MjIwODY0MTU4JnNpemU9MC4wMDYwNjcmdUlkPTI1JmZTSWQ9MSZ1U0lkPTEmZD1mYWxzZSZ0a249JnB1YmxpY1VybD10cnVlJmF0dGFjaD1mYWxzZQ==" alt="Logo Andra">
         <img class="logo" src="https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xNzk3JnZlcj0xMDAwJmZpbGU9YW5kcmEtbG9nbyslMjgxJTI5KyUyODElMjkucG5nJmNyYz00MjIwODY0MTU4JnNpemU9MC4wMDYwNjcmdUlkPTI1JmZTSWQ9MSZ1U0lkPTEmZD1mYWxzZSZ0a249JnB1YmxpY1VybD10cnVlJmF0dGFjaD1mYWxzZQ==" alt="Logo Andra">
@@ -91,59 +100,31 @@
         <h1>Sorteio de Viagem</h1>
         <img class="main-image" src="https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xODkwJnZlcj0xMDAwJmZpbGU9MjM4OTQ3MjkzNDIucG5nJmNyYz0zNDEyOTY1NTAzJnNpemU9MS40NTE2MTImdUlkPTI1JmZTSWQ9MSZ1U0lkPTEmZD1mYWxzZSZ0a249JnB1YmxpY1VybD10cnVlJmF0dGFjaD1mYWxzZQ==" alt="Sorteio de Viagem">
        <form action="/participar" method="POST">
-    <label for="name">Nome:</label>
-    <input type="text" id="name" name="name" required>
-
-    <label for="branch">Filial:</label>
-    <input type="text" id="branch" name="branch" required>
-
-    <input type="submit" value="Participar do Sorteio">
-</form>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('form');
-    // URL do seu servidor após deploy
-    const API_URL = 'https://sorteio-viagem.onrender.com'; // Você vai substituir por sua URL real
-
-    form.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        // Desabilita o botão para evitar envios duplicados
-        const submitButton = form.querySelector('input[type="submit"]');
-        submitButton.disabled = true;
-        submitButton.value = 'Enviando...';
-
-        try {
-            const name = document.getElementById('name').value;
-            const branch = document.getElementById('branch').value;
-
-            const response = await fetch(`${API_URL}/participar`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ name, branch })
-            });
-
-            const data = await response.json();
-
-            if (data.success) {
-                alert('Participação registrada com sucesso!');
-                form.reset();
-            } else {
-                throw new Error(data.message);
-            }
-        } catch (error) {
-            console.error('Erro:', error);
-            alert('Erro ao registrar participação. Por favor, tente novamente.');
-        } finally {
-            // Reabilita o botão
-            submitButton.disabled = false;
-            submitButton.value = 'Participar do Sorteio';
-        }
-    });
-});
-</script>
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" required>
+            <input type="submit" value="Participar do Sorteio">
+        </form>
     </div>
+    <div class="images-container" id="imagesContainer">
+        <!-- Imagens dinâmicas serão adicionadas aqui -->
+    </div>
+    <script>
+        // Adiciona um event listener para o formulário
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita o envio padrão do formulário
+
+            // Cria uma nova imagem
+            const newImage = document.createElement('img');
+            newImage.src = "https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xODkwJnZlcj0xMDAwJmZpbGU9MjM4OTQ3MjkzNDIucG5nJmNyYz0zNDEyOTY1NTAzJnNpemU9MS40NTE2MTImdUlkPTI1JmZTSWQ9MSZ1U0lkPTEmZD1mYWxzZSZ0a249JnB1YmxpY1VybD10cnVlJmF0dGFjaD1mYWxzZQ=="; // URL da imagem
+            newImage.alt = "Participante do Sorteio";
+            newImage.classList.add('dynamic-image');
+
+            // Adiciona a nova imagem ao container
+            document.getElementById('imagesContainer').appendChild(newImage);
+
+            // Limpa o campo do nome
+            document.getElementById('name').value = '';
+        });
+    </script>
 </body>
 </html>
