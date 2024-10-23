@@ -3,24 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Nome e Filial</title>
+    <title>Sorteio de Viagem</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             height: 100vh;
+            margin: 0;
             background-color: #f0f0f0;
+        }
+        .logo-container {
+            margin-bottom: 20px;
         }
         .form-container {
             background-color: white;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
         h1 {
-            text-align: center;
+            margin: 0;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 10px 0;
         }
         label {
             display: block;
@@ -50,28 +61,22 @@
     </style>
 </head>
 <body>
+    <div class="logo-container">
+        <img src="https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xNzk3JnZlcj0xMDAwJmZpbGU9YW5kcmEtbG9nbyslMjgxJTI5KyUyODElMjkucG5nJmNyYz00MjIwODY0MTU4JnNpemU9MC4wMDYwNjcmdUlkPTI1JmZTSWQ9MSZ1U0lkPTEmZD1mYWxzZSZ0a249JnB1YmxpY1VybD10cnVlJmF0dGFjaD1mYWxzZQ==" alt="Logo Andra">
+    </div>
     <div class="form-container">
-        <h1>Cadastro</h1>
-        <form id="cadastro-form">
+        <h1>Sorteio de Viagem</h1>
+        <img src="https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xODg2JnZlcj0xMDAwJmZpbGU9bG9nb3RpcG8tbWVnYS1zb3J0ZWlvLTNkLWxhYmVsLXBhcmEtY2FtcGFuaGFzLWRlLXN1cGVybWVyY2Fkby1tZWdhLXNvcnRlaW8tbm8tYnJhc2lsXzMxNDk5OS0yMDU3KyUyODElMjkucG5nJmNyYz0xMTgyNzE2OTEmc2l6ZT0wLjA0NzU5NyZ1SWQ9MjUmZlNJZD0xJnVTSWQ9MSZkPWZhbHNlJnRrbj0mcHVibGljVXJsPXRydWUmYXR0YWNoPWZhbHNl.png" alt="Sorteio de Viagem">
+        
+        <form id="sorteio-form">
             <label for="nome">Nome:</label>
             <input type="text" id="nome" name="nome" required>
             
             <label for="filial">Filial:</label>
             <input type="text" id="filial" name="filial" required>
             
-            <input type="submit" value="Enviar">
+            <input type="submit" value="Participar">
         </form>
     </div>
-
-    <script>
-        document.getElementById('cadastro-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Impede o envio do formulário para evitar recarregamento
-
-            const nome = document.getElementById('nome').value;
-            const filial = document.getElementById('filial').value;
-
-            alert(`Nome: ${nome}\nFilial: ${filial}`);
-        });
-    </script>
 </body>
 </html>
