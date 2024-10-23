@@ -7,91 +7,65 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             height: 100vh;
             margin: 0;
             background-image: url('https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xODg2JnZlcj0xMDAwJmZpbGU9bG9nb3RpcG8tbWVnYS1zb3J0ZWlvLTNkLWxhYmVsLXBhcmEtY2FtcGFuaGFzLWRlLXN1cGVybWVyY2Fkby1tZWdhLXNvcnRlaW8tbm8tYnJhc2lsXzMxNDk5OS0yMDU3KyUyODElMjkucG5nJmNyYz0xMTgyNzE2OTEmc2l6ZT0wLjA0NzU5NyZ1SWQ9MjUmZlNJZD0xJnVTSWQ9MSZkPWZhbHNlJnRrbj0mcHVibGljVXJsPXRydWUmYXR0YWNoPWZhbHNl.png');
-            background-size: cover; /* Faz a imagem cobrir toda a área */
+            background-size: cover;
             background-position: center;
-            color: white; /* Muda a cor do texto para branco */
-        }
-        .logo-container {
-            margin-bottom: 20px;
-            display: flex;
-            flex-wrap: wrap; /* Para permitir que os logos quebrem em várias linhas */
-            justify-content: center; /* Centraliza os logos */
-            width: 100%; /* Garante que ocupe toda a largura */
-        }
-        .logo {
-            max-width: 100px; /* Diminuindo o tamanho do logo */
-            height: auto;
-            margin: 10px;
+            color: white;
+            position: relative; /* Para posicionamento dos botões */
         }
         .form-container {
-            background-color: rgba(255, 255, 255, 0.9); /* Fundo branco semi-transparente */
-            padding: 30px; /* Aumentando o padding */
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Sombra mais pronunciada */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
             text-align: center;
-            width: 90%; /* Largura do container */
-            max-width: 400px; /* Limite máximo para não ficar muito largo */
+            max-width: 400px;
+            margin: auto;
+            z-index: 1;
+            position: relative;
         }
-        h1 {
-            margin: 0;
-            font-size: 24px; /* Aumentando o tamanho do título */
-        }
-        img.main-image {
-            max-width: 100%;
-            height: auto;
-            margin: 10px 0;
-        }
-        label {
-            display: block;
-            margin-top: 15px; /* Aumentando espaço acima */
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #333; /* Cor do texto dos labels */
-        }
-        input[type="text"] {
+        iframe {
             width: 100%;
-            padding: 12px; /* Aumentando o padding das caixinhas */
-            margin-bottom: 15px; /* Aumentando o espaço entre as caixinhas */
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px; /* Aumentando o tamanho da fonte */
+            height: 600px;
         }
-        input[type="submit"] {
-            width: 100%;
-            padding: 12px;
-            background-color: #007bff;
-            color: white;
+        .crazy-button {
+            position: absolute;
+            background-color: red;
+            color: yellow;
+            font-size: 20px;
+            padding: 10px 20px;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
-            font-size: 16px; /* Aumentando o tamanho da fonte do botão */
+            border-radius: 5px;
+            font-weight: bold;
+            animation: blink 1s infinite; /* Botões piscando */
         }
-        input[type="submit"]:hover {
-            background-color: #0056b3;
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
         }
+        /* Estilos diferentes para cada botão */
+        .button-1 { top: 10%; left: 5%; }
+        .button-2 { top: 25%; left: 70%; }
+        .button-3 { top: 50%; left: 20%; }
+        .button-4 { top: 70%; left: 60%; }
+        .button-5 { top: 85%; left: 10%; }
     </style>
 </head>
 <body>
-    <div class="logo-container">
-        <!-- Replicando o logo várias vezes -->
-        <img class="logo" src="https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xNzk3JnZlcj0xMDAwJmZpbGU9YW5kcmEtbG9nbyslMjgxJTI5KyUyODElMjkucG5nJmNyYz00MjIwODY0MTU4JnNpemU9MC4wMDYwNjcmdUlkPTI1JmZTSWQ9MSZ1U0lkPTEmZD1mYWxzZSZ0a249JnB1YmxpY1VybD10cnVlJmF0dGFjaD1mYWxzZQ==" alt="Logo Andra">
-        <img class="logo" src="https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xNzk3JnZlcj0xMDAwJmZpbGU9YW5kcmEtbG9nbyslMjgxJTI5KyUyODElMjkucG5nJmNyYz00MjIwODY0MTU4JnNpemU9MC4wMDYwNjcmdUlkPTI1JmZTSWQ9MSZ1U0lkPTEmZD1mYWxzZSZ0a249JnB1YmxpY1VybD10cnVlJmF0dGFjaD1mYWxzZQ==" alt="Logo Andra">
-        <img class="logo" src="https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xNzk3JnZlcj0xMDAwJmZpbGU9YW5kcmEtbG9nbyslMjgxJTI5KyUyODElMjkucG5nJmNyYz00MjIwODY0MTU4JnNpemU9MC4wMDYwNjcmdUlkPTI1JmZTSWQ9MSZ1U0lkPTEmZD1mYWxzZSZ0a249JnB1YmxpY1VybD10cnVlJmF0dGFjaD1mYWxzZQ==" alt="Logo Andra">
-        <img class="logo" src="https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xNzk3JnZlcj0xMDAwJmZpbGU9YW5kcmEtbG9nbyslMjgxJTI5KyUyODElMjkucG5nJmNyYz00MjIwODY0MTU4JnNpemU9MC4wMDYwNjcmdUlkPTI1JmZTSWQ9MSZ1U0lkPTEmZD1mYWxzZSZ0a249JnB1YmxpY1VybD10cnVlJmF0dGFjaD1mYWxzZQ==" alt="Logo Andra">
-        <img class="logo" src="https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xNzk3JnZlcj0xMDAwJmZpbGU9YW5kcmEtbG9nbyslMjgxJTI5KyUyODElMjkucG5nJmNyYz00MjIwODY0MTU4JnNpemU9MC4wMDYwNjcmdUlkPTI1JmZTSWQ9MSZ1U0lkPTEmZD1mYWxzZSZ0a249JnB1YmxpY1VybD10cnVlJmF0dGFjaD1mYWxzZQ==" alt="Logo Andra">
-    </div>
     <div class="form-container">
         <h1>Sorteio de Viagem</h1>
-        <img class="main-image" src="https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xODkwJnZlcj0xMDAwJmZpbGU9MjM4OTQ3MjkzNDIucG5nJmNyYz0zNDEyOTY1NTAzJnNpemU9MS40NTE2MTImdUlkPTI1JmZTSWQ9MSZ1U0lkPTEmZD1mYWxzZSZ0a249JnB1YmxpY1VybD10cnVlJmF0dGFjaD1mYWxzZQ==" alt="Sorteio de Viagem">
-     <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeI4uRsZJfnQ7lsdfRX07-YY3PLkc1SSClnt3DNhO-Bm8dmrA/viewform?embedded=true" width="640" height="1636" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeI4uRsZJfnQ7lsdfRX07-YY3PLkc1SSClnt3DNhO-Bm8dmrA/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     </div>
+
+    <!-- Botões espalhados -->
+    <button class="crazy-button button-1">VOCÊ GANHOU 30 CARROS!!!</button>
+    <button class="crazy-button button-2">VOCÊ GANHOU 30 CARROS!!!</button>
+    <button class="crazy-button button-3">VOCÊ GANHOU 30 CARROS!!!</button>
+    <button class="crazy-button button-4">VOCÊ GANHOU 30 CARROS!!!</button>
+    <button class="crazy-button button-5">VOCÊ GANHOU 30 CARROS!!!</button>
 </body>
 </html>
