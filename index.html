@@ -99,7 +99,52 @@
 
     <input type="submit" value="Participar do Sorteio">
 </form>
+<script>
+// sorteio.js
 
+// Função para capturar os dados do formulário
+function enviarDados() {
+    // Captura os valores dos inputs
+    const nome = document.getElementById('nome').value;
+    const filial = document.getElementById('filial').value;
+
+    // Valida se os campos estão preenchidos
+    if (!nome || !filial) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+    }
+
+    // Cria um objeto com os dados
+    const dados = {
+        nome: nome,
+        filial: filial
+    };
+
+    // Envia os dados para o servidor
+    fetch('/participar', { // Chama a rota que você definiu no servidor
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dados)
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Dados enviados com sucesso!');
+        } else {
+            alert('Erro ao enviar dados.');
+        }
+    })
+    .catch(error => {
+        console.error('Erro:', error);
+        alert('Erro ao enviar dados.');
+    });
+}
+
+// Adiciona um evento ao botão de envio
+document.getElementById('btnEnviar').addEventListener('click', enviarDados);
+
+</script>
     </div>
 </body>
 </html>
