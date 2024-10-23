@@ -100,71 +100,48 @@
     <input type="submit" value="Participar do Sorteio">
 </form>
 <script>
-const express = require('express');
-const bodyParser = require('body-parser');
-const sql = require('mssql');
-const cors = require('cors');
-require('dotenv').config();
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+    // URL do seu servidor após deploy
+    const API_URL = 'https://sorteio-viagem.onrender.com'; // Você vai substituir por sua URL real
 
-const app = express();
-const port = process.env.PORT || 3000;
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Desabilita o botão para evitar envios duplicados
+        const submitButton = form.querySelector('input[type="submit"]');
+        submitButton.disabled = true;
+        submitButton.value = 'Enviando...';
 
-// Configuração CORS para aceitar requisições do GitHub Pages
-app.use(cors({
-    origin: ['https://gitgiovanni.github.io', 'http://localhost:5500'],
-    methods: ['POST', 'GET', 'OPTIONS'],
-    credentials: true
-}));
+        try {
+            const name = document.getElementById('name').value;
+            const branch = document.getElementById('branch').value;
 
-app.use(bodyParser.json());
+            const response = await fetch(`${API_URL}/participar`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, branch })
+            });
 
-// Configuração do banco de dados com variáveis de ambiente
-const dbConfig = {
-    user: process.env.DB_USER || 'ANDRA-FLUIGDB\\Administrator',
-    password: process.env.DB_PASSWORD || '',
-    server: process.env.DB_SERVER || 'ANDRA-FLUIGDB\\SQLEXPRESS',
-    database: process.env.DB_NAME || 'SorteioViagem',
-    options: {
-        encrypt: true,
-        trustServerCertificate: true,
-        enableArithAbort: true
-    }
-};
+            const data = await response.json();
 
-// Rota de teste/status
-app.get('/', (req, res) => {
-    res.json({ status: 'online', message: 'API do Sorteio está funcionando!' });
-});
-
-// Rota principal do sorteio
-app.post('/participar', async (req, res) => {
-    try {
-        console.log('Recebido:', req.body);
-        const { name, branch } = req.body;
-
-        const pool = await sql.connect(dbConfig);
-        await pool.request()
-            .input('Nome', sql.NVarChar, name)
-            .input('Filial', sql.NVarChar, branch)
-            .query('INSERT INTO dbo.Participantes (Nome, Filial) VALUES (@Nome, @Filial)');
-
-        res.json({ 
-            success: true, 
-            message: 'Participação registrada com sucesso!' 
-        });
-    } catch (err) {
-        console.error('Erro:', err);
-        res.status(500).json({ 
-            success: false, 
-            message: 'Erro ao registrar participação.' 
-        });
-    } finally {
-        sql.close();
-    }
-});
-
-app.listen(port, () => {
-    console.log(`Servidor rodando na porta ${port}`);
+            if (data.success) {
+                alert('Participação registrada com sucesso!');
+                form.reset();
+            } else {
+                throw new Error(data.message);
+            }
+        } catch (error) {
+            console.error('Erro:', error);
+            alert('Erro ao registrar participação. Por favor, tente novamente.');
+        } finally {
+            // Reabilita o botão
+            submitButton.disabled = false;
+            submitButton.value = 'Participar do Sorteio';
+        }
+    });
 });
 </script>
     </div>
