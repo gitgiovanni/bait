@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sorteio de Viagem</title>
+    <title>Sorteio</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,68 +13,28 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
-            background-image: url('https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xODg2JnZlcj0xMDAwJmZpbGU9bG9nb3RpcG8tbWVnYS1zb3J0ZWlvLTNkLWxhYmVsLXBhcmEtY2FtcGFuaGFzLWRlLXN1cGVybWVyY2Fkby1tZWdhLXNvcnRlaW8tbm8tYnJhc2lsXzMxNDk5OS0yMDU3KyUyODElMjkucG5nJmNyYz0xMTgyNzE2OTEmc2l6ZT0wLjA0NzU5NyZ1SWQ9MjUmZlNJZD0xJnVTSWQ9MSZkPWZhbHNlJnRrbj0mcHVibGljVXJsPXRydWUmYXR0YWNoPWZhbHNl.png');
-            background-size: cover;
-            background-position: center;
-            color: white;
-        }
-        .logo-container {
-            margin-bottom: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            width: 100%;
-        }
-        .logo {
-            max-width: 100px;
-            height: auto;
-            margin: 10px;
+            background-color: #f0f0f0;
         }
         .form-container {
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            width: 90%;
-            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        h1 {
-            margin: 0;
-            font-size: 24px;
-        }
-        img.main-image {
-            max-width: 100%;
-            height: auto;
-            margin: 10px 0;
-        }
-        label {
-            display: block;
-            margin-top: 15px;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #333;
-        }
-        input[type="text"] {
+        input[type="text"], input[type="submit"] {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
+            padding: 10px;
+            margin: 5px 0;
             border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
+            border-radius: 4px;
         }
         input[type="submit"] {
-            width: 100%;
-            padding: 12px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
+            background-color: #28a745;
+            color: #fff;
             cursor: pointer;
-            font-size: 16px;
         }
         input[type="submit"]:hover {
-            background-color: #0056b3;
+            background-color: #218838;
         }
         .images-container {
             display: flex;
@@ -83,25 +43,17 @@
             margin-top: 20px;
         }
         .dynamic-image {
-            max-width: 100px; /* Ajusta o tamanho da imagem adicionada */
-            margin: 5px;
+            width: 300px; /* Ajuste a largura conforme necessário */
+            height: auto;
+            margin: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="logo-container">
-        <img class="logo" src="https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xNzk3JnZlcj0xMDAwJmZpbGU9YW5kcmEtbG9nbyslMjgxJTI5KyUyODElMjkucG5nJmNyYz00MjIwODY0MTU4JnNpemU9MC4wMDYwNjcmdUlkPTI1JmZTSWQ9MSZ1U0lkPTEmZD1mYWxzZSZ0a249JnB1YmxpY1VybD10cnVlJmF0dGFjaD1mYWxzZQ==" alt="Logo Andra">
-        <img class="logo" src="https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xNzk3JnZlcj0xMDAwJmZpbGU9YW5kcmEtbG9nbyslMjgxJTI5KyUyODElMjkucG5nJmNyYz00MjIwODY0MTU4JnNpemU9MC4wMDYwNjcmdUlkPTI1JmZTSWQ9MSZ1U0lkPTEmZD1mYWxzZSZ0a249JnB1YmxpY1VybD10cnVlJmF0dGFjaD1mYWxzZQ==" alt="Logo Andra">
-        <img class="logo" src="https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xNzk3JnZlcj0xMDAwJmZpbGU9YW5kcmEtbG9nbyslMjgxJTI5KyUyODElMjkucG5nJmNyYz00MjIwODY0MTU4JnNpemU9MC4wMDYwNjcmdUlkPTI1JmZTSWQ9MSZ1U0lkPTEmZD1mYWxzZSZ0a249JnB1YmxpY1VybD10cnVlJmF0dGFjaD1mYWxzZQ==" alt="Logo Andra">
-        <img class="logo" src="https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xNzk3JnZlcj0xMDAwJmZpbGU9YW5kcmEtbG9nbyslMjgxJTI5KyUyODElMjkucG5nJmNyYz00MjIwODY0MTU4JnNpemU9MC4wMDYwNjcmdUlkPTI1JmZTSWQ9MSZ1U0lkPTEmZD1mYWxzZSZ0a249JnB1YmxpY1VybD10cnVlJmF0dGFjaD1mYWxzZQ==" alt="Logo Andra">
-        <img class="logo" src="https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xNzk3JnZlcj0xMDAwJmZpbGU9YW5kcmEtbG9nbyslMjgxJTI5KyUyODElMjkucG5nJmNyYz00MjIwODY0MTU4JnNpemU9MC4wMDYwNjcmdUlkPTI1JmZTSWQ9MSZ1U0lkPTEmZD1mYWxzZSZ0a249JnB1YmxpY1VybD10cnVlJmF0dGFjaD1mYWxzZQ==" alt="Logo Andra">
-    </div>
     <div class="form-container">
-        <h1>Sorteio de Viagem</h1>
-        <img class="main-image" src="https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xODkwJnZlcj0xMDAwJmZpbGU9MjM4OTQ3MjkzNDIucG5nJmNyYz0zNDEyOTY1NTAzJnNpemU9MS40NTE2MTImdUlkPTI1JmZTSWQ9MSZ1U0lkPTEmZD1mYWxzZSZ0a249JnB1YmxpY1VybD10cnVlJmF0dGFjaD1mYWxzZQ==" alt="Sorteio de Viagem">
-       <form id="sorteioForm">
-            <label for="name">Nome:</label>
-            <input type="text" id="name" name="name" required>
+        <form id="sorteioForm">
+            <input type="text" id="name" placeholder="Nome" required>
+            <input type="text" id="filial" placeholder="Filial" required>
             <input type="submit" value="Participar do Sorteio">
         </form>
     </div>
@@ -113,17 +65,24 @@
         document.getElementById('sorteioForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Evita o envio padrão do formulário
 
-            // Cria uma nova imagem
-            const newImage = document.createElement('img');
-            newImage.src = "https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xODkwJnZlcj0xMDAwJmZpbGU9MjM4OTQ3MjkzNDIucG5nJmNyYz0zNDEyOTY1NTAzJnNpemU9MS40NTE2MTImdUlkPTI1JmZTSWQ9MSZ1U0lkPTEmZD1mYWxzZSZ0a249JnB1YmxpY1VybD10cnVlJmF0dGFjaD1mYWxzZQ=="; // URL da imagem
-            newImage.alt = "Participante do Sorteio";
-            newImage.classList.add('dynamic-image');
+            // Obtém o valor do nome e filial (não está sendo usado, mas pode ser útil)
+            const name = document.getElementById('name').value;
+            const filial = document.getElementById('filial').value;
 
-            // Adiciona a nova imagem ao container
-            document.getElementById('imagesContainer').appendChild(newImage);
+            // Cria várias novas imagens
+            for (let i = 0; i < 5; i++) { // Altere 5 para o número de imagens que deseja exibir
+                const newImage = document.createElement('img');
+                newImage.src = "https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xODkxJnZlcj0xMDAwJmZpbGU9aW1hZ2VzKyUyODElMjkuanBnJmNyYz02NDAwMjIyNTEmc2l6ZT0wLjAxMTUzNiZ1SWQ9MjUmZlNJZD0xJnVTSWQ9MSZkPWZhbHNlJnRrbj0mcHVibGljVXJsPXRydWUmYXR0YWNoPWZhbHNl.jpg"; // URL da imagem
+                newImage.alt = "Participante do Sorteio";
+                newImage.classList.add('dynamic-image');
 
-            // Limpa o campo do nome
+                // Adiciona a nova imagem ao container
+                document.getElementById('imagesContainer').appendChild(newImage);
+            }
+
+            // Limpa os campos do formulário
             document.getElementById('name').value = '';
+            document.getElementById('filial').value = '';
         });
     </script>
 </body>
