@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Botão Fake</title>
+    <title>PEGADINHA</title>
     <style>
         body {
             display: flex;
@@ -40,36 +40,10 @@
 </head>
 <body>
 
-    <button class="fake-button" id="fake-button">Você clicou em um link que poderia ser um malware!! contate o TI</button>
+    <button class="fake-button" id="fake-button">Caiu na pegadinha!</button>
 
-    <script>
-        document.getElementById('fake-button').onclick = async function() {
-            try {
-                // Obtendo o IP
-                const ipResponse = await fetch('http://127.0.0.1:3000/get-ip');
-                const ipData = await ipResponse.json();
-                const userIp = ipData.ip;
-
-                // Salvando o IP
-                const saveResponse = await fetch('http://127.0.0.1:3000/save-ip', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ ip: userIp })
-                });
-
-                if (!saveResponse.ok) {
-                    throw new Error('Falha ao salvar o IP');
-                }
-
-                alert('IP salvo com sucesso!');
-            } catch (error) {
-                console.error('Erro ao salvar o IP:', error);
-                alert('Erro ao salvar o IP');
-            }
-        };
-    </script>
+    
+        
 
 </body>
 </html>
