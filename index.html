@@ -68,6 +68,7 @@
             transform: translateY(-50%);
             z-index: 1001;
             display: none;
+            background-color: yellow; /* Fundo temporário para teste */
         }
     </style>
 </head>
@@ -95,7 +96,16 @@
 
         // Mostra a imagem estática após 60 segundos
         setTimeout(() => {
-            document.getElementById('static-image').style.display = 'block';
+            const imgElement = document.getElementById('static-image');
+            imgElement.style.display = 'block';
+
+            // Verifica se a imagem foi carregada corretamente
+            imgElement.onload = () => {
+                console.log("Imagem carregada com sucesso");
+            };
+            imgElement.onerror = () => {
+                console.log("Erro ao carregar a imagem");
+            };
         }, 60000);
     </script>
 </body>
