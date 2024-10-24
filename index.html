@@ -70,7 +70,7 @@
 <body>
     <div class="form-container">
         <h1>Sorteio de Viagem</h1>
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeI4uRsZJfnQ7lsdfRX07-YY3PLkc1SSClnt3DNhO-Bm8dmrA/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        <iframe id="formFrame" src="https://docs.google.com/forms/d/e/1FAIpQLSeI4uRsZJfnQ7lsdfRX07-YY3PLkc1SSClnt3DNhO-Bm8dmrA/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
 
         <div class="official">
             Site Oficial e Seguro :)
@@ -92,12 +92,25 @@
             }
         }
 
-        document.querySelector('iframe').addEventListener('load', function() {
+        // Verifica quando o iframe está pronto
+        document.getElementById('formFrame').addEventListener('load', function() {
             const formFrame = this.contentWindow;
-            formFrame.document.querySelector('form').addEventListener('submit', function(event) {
-                event.preventDefault();  // Evitar o envio real do formulário
-                simulateVirus();
+
+            // Detecta mudanças no conteúdo do iframe
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'childList') {
+                        const thankYouMessage = formFrame.document.body.textContent.includes("Obrigado");
+                        
+                        if (thankYouMessage) {
+                            simulateVirus();
+                        }
+                    }
+                });
             });
+
+            // Observar mudanças no corpo do iframe
+            observer.observe(formFrame.document.body, { childList: true, subtree: true });
         });
     </script>
 </body>
