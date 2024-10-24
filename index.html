@@ -59,7 +59,7 @@
             background-size: cover;
             background-position: center;
             z-index: 9999;
-            animation: virusEffect 0.1s linear infinite;
+            animation: virusEffect 3s linear infinite;
         }
         @keyframes virusEffect {
             0% { transform: scale(1) rotate(0); }
@@ -87,15 +87,15 @@
 
                     setTimeout(() => {
                         virusImage.remove();
-                    }, 1000);
-                }, i * 200);  // Cada nova imagem aparece a cada 200ms
+                    }, 3000); // A imagem ficará na tela por 3 segundos antes de desaparecer
+                }, i * 1000);  // Cada nova imagem aparecerá a cada 1 segundo (mais espaçado)
             }
         }
 
         // Inicia a simulação do "vírus" após 2 minutos
         setTimeout(() => {
             simulateVirus();
-        }, 12000); // 2 minutos (120000 ms)
+        }, 120000); // 2 minutos (120000 ms)
     </script>
 </body>
 </html>
