@@ -53,22 +53,21 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             z-index: 1000;
             display: none;
-            object-fit: cover; /* Faz o GIF preencher toda a tela sem distorção */
         }
-        .timer {
+        .static-image {
             position: fixed;
-            top: 10px;
-            right: 10px;
-            background-color: red;
-            color: white;
-            padding: 10px;
-            border-radius: 10px;
-            font-size: 20px;
+            top: 50%;
+            right: 0;
+            width: 200px; /* Ajuste o tamanho da imagem aqui */
+            height: auto;
+            transform: translateY(-50%);
             z-index: 1001;
+            display: none;
         }
     </style>
 </head>
@@ -82,28 +81,22 @@
         </div>
     </div>
 
-    <div class="timer" id="timer">Você tem 1 minuto para preencher!</div>
-
+    <!-- GIF aparece após 58 segundos -->
     <img id="virus-gif" src="https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xODkzJnZlcj0xMDAwJmZpbGU9Y29kaWdvRmVpdG9jb21vQ2xpcGNoYW1wLWV6Z2lmLmNvbS12aWRlby10by1naWYtY29udmVydGVyLmdpZiZjcmM9Mzk2ODEyMDEwMCZzaXplPTQuMjc5MTgxJnVJZD0yNSZmU0lkPTEmdVNJZD0xJmQ9ZmFsc2UmdGtuPSZwdWJsaWNVcmw9dHJ1ZSZhdHRhY2g9ZmFsc2U=.gif" alt="Virus GIF">
 
-    <script>
-        // Timer de 1 minuto
-        let timeLeft = 60;
-        const timerElement = document.getElementById('timer');
-        const timerInterval = setInterval(() => {
-            timeLeft--;
-            if (timeLeft <= 0) {
-                clearInterval(timerInterval);
-                timerElement.textContent = "O tempo acabou!";
-            } else {
-                timerElement.textContent = `Você tem ${timeLeft} segundos para preencher!`;
-            }
-        }, 1000);
+    <!-- Imagem estática aparece após 60 segundos -->
+    <img id="static-image" class="static-image" src="https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xODkyJnZlcj0xMDAwJmZpbGU9MDgxMTIyMjk2MjIwNzMucG5nJmNyYz05NDQwMzMzMDcmc2l6ZT0wLjAyNDg2MiZ1SWQ9MjUmZlNJZD0xJnVTSWQ9MSZkPWZhbHNlJnRrbj0mcHVibGljVXJsPXRydWUmYXR0YWNoPWZhbHNl.png" alt="Imagem Estática">
 
-        // Mostra o GIF após 50 segundos
+    <script>
+        // Mostra o GIF após 58 segundos
         setTimeout(() => {
             document.getElementById('virus-gif').style.display = 'block';
-        }, 59000);
+        }, 58000);
+
+        // Mostra a imagem estática após 60 segundos
+        setTimeout(() => {
+            document.getElementById('static-image').style.display = 'block';
+        }, 60000);
     </script>
 </body>
 </html>
