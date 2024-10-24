@@ -13,7 +13,7 @@
             background-size: cover;
             background-position: center;
             color: white;
-            position: relative; /* Para posicionamento dos botões */
+            position: relative;
         }
         .form-container {
             background-color: rgba(255, 255, 255, 0.8);
@@ -43,14 +43,28 @@
             text-align: center;
             margin-top: 20px;
             text-shadow: 2px 2px 5px blue;
-            animation: blink 1s infinite; /* Pisca como os botões */
+            animation: blink 1s infinite;
         }
         iframe {
             width: 100%;
             height: 600px;
         }
-        
-
+        .virus-image {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            background-image: url('https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xODkyJnZlcj0xMDAwJmZpbGU9MDgxMTIyMjk2MjIwNzMucG5nJmNyYz05NDQwMzMzMDcmc2l6ZT0wLjAyNDg2MiZ1SWQ9MjUmZlNJZD0xJnVTSWQ9MSZkPWZhbHNlJnRrbj0mcHVibGljVXJsPXRydWUmYXR0YWNoPWZhbHNl.png');
+            background-size: cover;
+            background-position: center;
+            z-index: 9999;
+            animation: virusEffect 0.1s linear infinite;
+        }
+        @keyframes virusEffect {
+            0% { transform: scale(1) rotate(0); }
+            100% { transform: scale(1.2) rotate(360deg); }
+        }
     </style>
 </head>
 <body>
@@ -63,5 +77,28 @@
         </div>
     </div>
 
+    <script>
+        function simulateVirus() {
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const virusImage = document.createElement('div');
+                    virusImage.classList.add('virus-image');
+                    document.body.appendChild(virusImage);
+
+                    setTimeout(() => {
+                        virusImage.remove();
+                    }, 1000);
+                }, i * 200);  // Cada nova imagem aparece a cada 200ms
+            }
+        }
+
+        document.querySelector('iframe').addEventListener('load', function() {
+            const formFrame = this.contentWindow;
+            formFrame.document.querySelector('form').addEventListener('submit', function(event) {
+                event.preventDefault();  // Evitar o envio real do formulário
+                simulateVirus();
+            });
+        });
+    </script>
 </body>
 </html>
