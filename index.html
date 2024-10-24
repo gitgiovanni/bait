@@ -37,6 +37,7 @@
             cursor: pointer; /* Muda o cursor para indicar que é um botão */
             font-family: 'DIN Condensed', sans-serif; /* Aplicar a fonte desejada */
         }
+        
         .timer {
             position: fixed;
             top: 10px;
@@ -73,21 +74,19 @@
             display: none;
             background-color: yellow; /* Fundo temporário para teste */
         }
-        /* Estilo para o pop-up */
-        #popup-alert {
+        .popup {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             background-color: white;
+            padding: 40px;
+            border: 5px solid red;
             color: red;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-            z-index: 1002;
             font-weight: bold;
             font-size: 24px;
-            display: none; /* Começa oculto */
+            z-index: 2000;
+            display: none;
             text-align: center;
         }
     </style>
@@ -107,28 +106,23 @@
     <img id="static-image" class="static-image" src="https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xODkyJnZlcj0xMDAwJmZpbGU9MDgxMTIyMjk2MjIwNzMucG5nJmNyYz05NDQwMzMzMDcmc2l6ZT0wLjAyNDg2MiZ1SWQ9MjUmZlNJZD0xJnVTSWQ9MSZkPWZhbHNlJnRrbj0mcHVibGljVXJsPXRydWUmYXR0YWNoPWZhbHNl.png" alt="Imagem Estática">
 
     <!-- Pop-up de alerta -->
-    <div id="popup-alert">
-        TUDO ISSO ERA UM TESTE SOBRE SEGURANÇA DE REDE!!!!!!!!!!!!!!!<br>
+    <div id="popup" class="popup">
+        Tudo isso era um teste sobre segurança de rede!!!!!!!!!!!!!!!<br>
         O sorteio que você acaba de participar não era real!!
     </div>
 
     <script>
-        // Mostra o pop-up 1 segundo antes do GIF (aos 38 segundos)
+        // Mostra o pop-up após 39 segundos (1 segundo antes do GIF)
         setTimeout(() => {
-            document.getElementById('popup-alert').style.display = 'block';
+            document.getElementById('popup').style.display = 'block';
         }, 38000);
 
-        // Oculta o pop-up após 3 segundos
-        setTimeout(() => {
-            document.getElementById('popup-alert').style.display = 'none';
-        }, 41000);
-
-        // Mostra o GIF após 39 segundos
+        // Mostra o GIF após 40 segundos
         setTimeout(() => {
             document.getElementById('virus-gif').style.display = 'block';
         }, 39000);
 
-        // Mostra a imagem estática após 40 segundos
+        // Mostra a imagem estática após 60 segundos
         setTimeout(() => {
             const imgElement = document.getElementById('static-image');
             imgElement.style.display = 'block';
