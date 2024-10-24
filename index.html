@@ -109,7 +109,7 @@
         // Mostra o GIF após 58 segundos
         setTimeout(() => {
             document.getElementById('virus-gif').style.display = 'block';
-        }, 58000);
+        }, 39000);
 
         // Mostra a imagem estática após 60 segundos
         setTimeout(() => {
@@ -123,10 +123,10 @@
             imgElement.onerror = () => {
                 console.log("Erro ao carregar a imagem");
             };
-        }, 60000);
+        }, 40000);
 
         // Atualiza o timer a cada segundo
-        let timeLeft = 60; // Tempo total em segundos
+        let timeLeft = 40; // Tempo total em segundos
         const timerElement = document.getElementById('timer');
 
         const timerInterval = setInterval(() => {
@@ -137,7 +137,7 @@
                 clearInterval(timerInterval);
                 timerElement.textContent = "Tempo esgotado!";
             }
-        }, 1000);
+        }, 400);
     </script>
 </body>
 </html>
