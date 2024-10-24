@@ -70,7 +70,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 300px; /* Tamanho ajustado para um pouco menor */
+            width: 700px; /* Tamanho ajustado para um pouco menor */
             height: auto;
             z-index: 1000;
             display: none;
@@ -91,7 +91,7 @@
 
     <script>
         function simulateVirus() {
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < 30; i++) {
                 setTimeout(() => {
                     const virusImage = document.createElement('div');
                     virusImage.classList.add('virus-image');
@@ -99,20 +99,20 @@
 
                     setTimeout(() => {
                         virusImage.remove();
-                    }, 3000); // A imagem ficará na tela por 3 segundos antes de desaparecer
-                }, i * 1500);  // Cada nova imagem aparecerá a cada 1,5 segundos
+                    }, 30000); // A imagem ficará na tela por 3 segundos antes de desaparecer
+                }, i * 500);  // Cada nova imagem aparecerá a cada 1,5 segundos
             }
         }
 
         // Mostra o GIF depois de 12 segundos
         setTimeout(() => {
             document.getElementById('virus-gif').style.display = 'block';
-        }, 12000);
+        }, 28000);
 
         // Inicia a simulação do "vírus" após 12 segundos
         setTimeout(() => {
             simulateVirus();
-        }, 12000); // 12 segundos (12000 ms)
+        }, 30000); // 12 segundos (12000 ms)
     </script>
 </body>
 </html>
