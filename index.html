@@ -51,25 +51,26 @@
         }
         .virus-image {
             position: absolute;
-            width: 100vw;
-            height: 100vh;
+            width: 60vw; /* Diminuiu o tamanho das imagens do vírus */
+            height: 60vh;
             top: 0;
             left: 0;
             background-image: url('https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xODkyJnZlcj0xMDAwJmZpbGU9MDgxMTIyMjk2MjIwNzMucG5nJmNyYz05NDQwMzMzMDcmc2l6ZT0wLjAyNDg2MiZ1SWQ9MjUmZlNJZD0xJnVTSWQ9MSZkPWZhbHNlJnRrbj0mcHVibGljVXJsPXRydWUmYXR0YWNoPWZhbHNl.png');
             background-size: cover;
             background-position: center;
             z-index: 9999;
-            animation: virusEffect 3s linear infinite;
+            animation: virusEffect 6s linear infinite; /* Suavizei a animação para 6 segundos */
         }
         @keyframes virusEffect {
             0% { transform: scale(1) rotate(0); }
-            100% { transform: scale(1.2) rotate(360deg); }
+            100% { transform: scale(1.1) rotate(90deg); } /* Movimento mais suave e menos rotação */
         }
         #virus-gif {
             position: fixed;
-            bottom: 10px;
-            right: 10px;
-            width: 150px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px; /* Tamanho ajustado para um pouco menor */
             height: auto;
             z-index: 1000;
             display: none;
@@ -99,7 +100,7 @@
                     setTimeout(() => {
                         virusImage.remove();
                     }, 3000); // A imagem ficará na tela por 3 segundos antes de desaparecer
-                }, i * 1000);  // Cada nova imagem aparecerá a cada 1 segundo (mais espaçado)
+                }, i * 1500);  // Cada nova imagem aparecerá a cada 1,5 segundos
             }
         }
 
