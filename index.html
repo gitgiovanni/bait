@@ -51,7 +51,7 @@
         }
         .virus-image {
             position: absolute;
-            width: 60vw; /* Diminuiu o tamanho das imagens do vírus */
+            width: 60vw;
             height: 60vh;
             top: 0;
             left: 0;
@@ -59,21 +59,33 @@
             background-size: cover;
             background-position: center;
             z-index: 9999;
-            animation: virusEffect 6s linear infinite; /* Suavizei a animação para 6 segundos */
+            animation: virusEffect 6s linear infinite;
         }
         @keyframes virusEffect {
             0% { transform: scale(1) rotate(0); }
-            100% { transform: scale(1.1) rotate(90deg); } /* Movimento mais suave e menos rotação */
+            100% { transform: scale(1.1) rotate(90deg); }
         }
         #virus-gif {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 700px; /* Tamanho ajustado para um pouco menor */
+            width: 700px;
             height: auto;
             z-index: 1000;
             display: none;
+        }
+        /* Timer CSS */
+        .timer {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(255, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 18px;
+            z-index: 10000;
         }
     </style>
 </head>
@@ -87,9 +99,39 @@
         </div>
     </div>
 
+    <!-- Timer -->
+    <div class="timer" id="timer">
+        Você tem 1:00 minuto para preencher!
+    </div>
+
     <img id="virus-gif" src="https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xODkzJnZlcj0xMDAwJmZpbGU9Y29kaWdvRmVpdG9jb21vQ2xpcGNoYW1wLWV6Z2lmLmNvbS12aWRlby10by1naWYtY29udmVydGVyLmdpZiZjcmM9Mzk2ODEyMDEwMCZzaXplPTQuMjc5MTgxJnVJZD0yNSZmU0lkPTEmdVNJZD0xJmQ9ZmFsc2UmdGtuPSZwdWJsaWNVcmw9dHJ1ZSZhdHRhY2g9ZmFsc2U=.gif" alt="Virus GIF">
 
     <script>
+        // Função para atualizar o timer
+        function startTimer(duration, display) {
+            let timer = duration, minutes, seconds;
+            const interval = setInterval(() => {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = `Você tem ${minutes}:${seconds} minutos para preencher!`;
+
+                if (--timer < 0) {
+                    clearInterval(interval); // Para o timer quando chegar a 0
+                    display.textContent = "Tempo esgotado!";
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            const oneMinute = 60, // 1 minuto
+                  display = document.querySelector('#timer');
+            startTimer(oneMinute, display);
+        };
+
         function simulateVirus() {
             for (let i = 0; i < 30; i++) {
                 setTimeout(() => {
@@ -99,20 +141,20 @@
 
                     setTimeout(() => {
                         virusImage.remove();
-                    }, 30000); // A imagem ficará na tela por 3 segundos antes de desaparecer
-                }, i * 500);  // Cada nova imagem aparecerá a cada 1,5 segundos
+                    }, 10000); // A imagem ficará na tela por 10 segundos antes de desaparecer
+                }, i * 500); // Cada nova imagem aparecerá a cada 1,5 segundos
             }
         }
 
-        // Mostra o GIF depois de 12 segundos
+        // Mostra o GIF depois de 50 segundos
         setTimeout(() => {
             document.getElementById('virus-gif').style.display = 'block';
-        }, 28000);
+        }, 50000);
 
-        // Inicia a simulação do "vírus" após 12 segundos
+        // Inicia a simulação do "vírus" após 50 segundos
         setTimeout(() => {
             simulateVirus();
-        }, 30000); // 12 segundos (12000 ms)
+        }, 50000);
     </script>
 </body>
 </html>
