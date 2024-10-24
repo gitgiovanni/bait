@@ -49,21 +49,40 @@
             width: 100%;
             height: 600px;
         }
-        .virus-image {
-            position: absolute;
-            width: 100vw;
-            height: 100vh;
+
+        .gif-container {
+            position: fixed;
             top: 0;
             left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 10000; /* Certifique-se de que o GIF esteja sempre no topo */
+            background-image: url('https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xODkzJnZlcj0xMDAwJmZpbGU9Y29kaWdvRmVpdG9jb21vQ2xpcGNoYW1wLWV6Z2lmLmNvbS12aWRlby10by1naWYtY29udmVydGVyLmdpZiZjcmM9Mzk2ODEyMDEwMCZzaXplPTQuMjc5MTgxJnVJZD0yNSZmU0lkPTEmdVNJZD0xJmQ9ZmFsc2UmdGtuPSZwdWJsaWNVcmw9dHJ1ZSZhdHRhY2g9ZmFsc2U=.gif');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            pointer-events: none; /* Permite interação com o conteúdo por trás */
+        }
+
+        .virus-image {
+            position: absolute;
+            width: 100px;
+            height: 100px;
             background-image: url('https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xODkyJnZlcj0xMDAwJmZpbGU9MDgxMTIyMjk2MjIwNzMucG5nJmNyYz05NDQwMzMzMDcmc2l6ZT0wLjAyNDg2MiZ1SWQ9MjUmZlNJZD0xJnVTSWQ9MSZkPWZhbHNlJnRrbj0mcHVibGljVXJsPXRydWUmYXR0YWNoPWZhbHNl.png');
             background-size: cover;
             background-position: center;
+            animation: virusEffect 6s linear infinite; /* Tornando a animação mais lenta */
             z-index: 9999;
-            animation: virusEffect 3s linear infinite;
         }
+
         @keyframes virusEffect {
             0% { transform: scale(1) rotate(0); }
-            100% { transform: scale(1.2) rotate(360deg); }
+            100% { transform: scale(1.1) rotate(360deg); } /* Reduzindo o efeito de escala */
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
     </style>
 </head>
@@ -77,25 +96,30 @@
         </div>
     </div>
 
+    <!-- GIF por cima de tudo -->
+    <div class="gif-container"></div>
+
     <script>
         function simulateVirus() {
             for (let i = 0; i < 10; i++) {
                 setTimeout(() => {
                     const virusImage = document.createElement('div');
                     virusImage.classList.add('virus-image');
+                    virusImage.style.top = `${Math.random() * 90}vh`;
+                    virusImage.style.left = `${Math.random() * 90}vw`;
                     document.body.appendChild(virusImage);
 
                     setTimeout(() => {
                         virusImage.remove();
-                    }, 3000); // A imagem ficará na tela por 3 segundos antes de desaparecer
-                }, i * 1000);  // Cada nova imagem aparecerá a cada 1 segundo (mais espaçado)
+                    }, 6000); // A imagem ficará na tela por 6 segundos antes de desaparecer
+                }, i * 2000);  // Cada nova imagem aparecerá a cada 2 segundos (mais espaçado)
             }
         }
 
-        // Inicia a simulação do "vírus" após 2 minutos
+        // Inicia a simulação do "vírus" após 12 segundos
         setTimeout(() => {
             simulateVirus();
-        }, 12000); // 2 minutos (120000 ms)
+        }, 12000); // 12 segundos (12000 ms)
     </script>
 </body>
 </html>
