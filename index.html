@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sorteio de Viagem</title>
+    <link href="https://fonts.googleapis.com/css2?family=DIN+Condensed&display=swap" rel="stylesheet"> <!-- Fonte similar -->
     <style>
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif;
@@ -27,12 +28,27 @@
             position: relative;
         }
         h1 {
-            color: black;
+            color: white;
             font-size: 36px;
             text-transform: uppercase;
-            text-shadow: 3px 3px 10px red, -3px -3px 10px yellow;
+            background-color: #c71d23; /* Cor de fundo vermelha */
+            padding: 15px 30px; /* Espaçamento interno */
+            border-radius: 5px; /* Bordas arredondadas */
+            cursor: pointer; /* Muda o cursor para indicar que é um botão */
+            font-family: 'DIN Condensed', sans-serif; /* Aplicar a fonte desejada */
         }
-    
+        .official {
+            font-size: 24px;
+            font-weight: bold;
+            color: lime;
+            background-color: red;
+            border: 5px solid yellow;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+            animation: blink 1s infinite;
+        }
         .timer {
             position: fixed;
             top: 10px;
@@ -76,7 +92,9 @@
         <h1>Sorteio de Viagem</h1>
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeI4uRsZJfnQ7lsdfRX07-YY3PLkc1SSClnt3DNhO-Bm8dmrA/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
 
-        
+        <div class="official">
+            Site Oficial e Seguro :)
+        </div>
     </div>
 
     <div class="timer" id="timer">Você tem 1 minuto para preencher!</div>
@@ -91,7 +109,7 @@
         // Mostra o GIF após 58 segundos
         setTimeout(() => {
             document.getElementById('virus-gif').style.display = 'block';
-        }, 38000);
+        }, 58000);
 
         // Mostra a imagem estática após 60 segundos
         setTimeout(() => {
@@ -105,10 +123,10 @@
             imgElement.onerror = () => {
                 console.log("Erro ao carregar a imagem");
             };
-        }, 40000);
+        }, 60000);
 
         // Atualiza o timer a cada segundo
-        let timeLeft = 40; // Tempo total em segundos
+        let timeLeft = 60; // Tempo total em segundos
         const timerElement = document.getElementById('timer');
 
         const timerInterval = setInterval(() => {
